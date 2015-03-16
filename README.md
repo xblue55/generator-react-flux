@@ -37,6 +37,55 @@ cd example
 yo react-flux
 ```
 
+### Directory structure
+```
+.
+├── app
+│   ├── actions
+│   │   └── TodoActionCreators.js
+│   ├── app.js
+│   ├── assets
+│   │   ├── fonts
+│   │   ├── images
+│   │   └── styles
+│   │       └── app.scss
+│   ├── components
+│   │   ├── Header.js
+│   │   ├── PageHome.js
+│   │   ├── PageNested.js
+│   │   ├── PageNormal.js
+│   │   ├── PageNotFound.js
+│   │   ├── SubPageDefault.js
+│   │   ├── SubPage.js
+│   │   ├── TodoItem.js
+│   │   └── Todo.js
+│   ├── constants
+│   │   └── TodoConstant.js
+│   ├── dispatcher
+│   │   └── TodoDispatcher.js
+│   ├── index.html
+│   ├── libraries
+│   └── stores
+│       └── TodoStore.js
+├── bower.json
+├── gulpfile.js
+├── node_modules
+├── package.json
+├── README.md
+└── webpack.config.js
+```
+
+### Gulp tasks
+Watch & rebuild(dev):
+```bash
+gulp serve
+```
+
+Build:
+```bash
+gulp build
+```
+
 ## License
 
 MIT
