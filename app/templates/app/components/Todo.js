@@ -1,0 +1,73 @@
+var React = require('react');
+var TodoStore = require('../stores/TodoStore');
+var TodoConstant = require('../constants/TodoConstant');
+var TodoActionCreators = require('../actions/TodoActionCreators');
+var _ = require('underscore');
+var TodoItem = require('../components/TodoItem');
+var classNames = require('classnames');
+
+var Todo = React.createClass({
+  getInitialState: function () {
+    return {
+      newItem: '',
+      hasChange: false,
+      isValid: false,
+      items: []
+    };
+  },
+  componentWillMount: function () {
+    var self = this;
+    TodoStore.on(TodoConstant.ITEM_ADDED, function () {
+      self.setState({newItem: '', hasChange: false, isValid: false});
+    });
+    TodoStore.on(TodoConstant.TODO_CHANGE, function () {
+      self.setState({items: TodoStore.getAll()});
+    });
+  },
+  componentDidMount: function () {
+    this.setState({items: TodoStore.getAll()});
+  },
+  handleInputChange: function (event) {
+    var value = event.target.value;
+    var isValid = value.length !== 0;
+    this.setState({
+      newItem: value,
+      hasChange: true,
+      isValid: isValid
+    });
+  },
+  addItem: function () {
+    TodoActionCreators.addNewItem(this.state.newItem);
+  },
+  renderItems: function () {
+    return _.map(this.state.items, function (item) {
+      return (
+        <TodoItem item={item}/>
+      )
+    });
+  },
+  render: function () {
+    var formGroupClass = classNames({
+      'form-group': true,
+      'has-success' : this.state.hasChange && this.state.isValid,
+      'has-error': this.state.hasChange && !this.state.isValid
+    });
+    return (
+      <div className="todo">
+        <div className={formGroupClass}>
+          <div className="input-group">
+            <input type="text" className="form-control" value={this.state.newItem} onChange={this.handleInputChange}></input>
+            <span className="input-group-btn">
+              <button className="btn btn-primary" type="button" onClick={this.addItem} disabled={!this.state.isValid}>Add</button>
+            </span>
+          </div>
+        </div>
+        <ul className="todo-items list-group">
+        {this.renderItems()}
+        </ul>
+      </div>
+    );
+  }
+});
+
+module.exports = Todo;
