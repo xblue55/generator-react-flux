@@ -8,9 +8,7 @@ var classNames = require('classnames');
 
 var Header = require('./components/Header');
 
-require('./libraries/jquery/dist/jquery');
-require('./libraries/bootstrap/dist/css/bootstrap.css');
-require('./libraries/bootstrap/dist/js/bootstrap');
+require('bootstrap');
 require('./assets/styles/app.scss');
 
 var App = React.createClass({
@@ -41,7 +39,6 @@ var routes = (
 );
 
 Router.run(routes, Router.HistoryLocation, function (Handler, state) {
-  console.log(state);
   var bodyClass = classNames('page' + state.path.replace('/','-'));
   document.body.classList.add(bodyClass);
   React.render(<Handler/>, document.getElementById('app'));

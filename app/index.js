@@ -66,7 +66,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.gitignore')
       );
       this.directory('app','app');
-      this.mkdir('app/assets/images');
       this.mkdir('app/assets/fonts');
     },
 

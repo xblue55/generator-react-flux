@@ -6,6 +6,8 @@ var _ = require('underscore');
 var TodoItem = require('../components/TodoItem');
 var classNames = require('classnames');
 
+var toastr = require('toastr');
+
 var Todo = React.createClass({
   getInitialState: function () {
     return {
@@ -19,6 +21,7 @@ var Todo = React.createClass({
     var self = this;
     TodoStore.on(TodoConstant.ITEM_ADDED, function () {
       self.setState({newItem: '', hasChange: false, isValid: false});
+      toastr.success('New todo item had been add.');
     });
     TodoStore.on(TodoConstant.TODO_CHANGE, function () {
       self.setState({items: TodoStore.getAll()});

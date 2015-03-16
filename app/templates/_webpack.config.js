@@ -1,7 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
-
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var bowerWebpackPlugin = require("bower-webpack-plugin");
 
 module.exports = {
   resolve: {
@@ -39,21 +38,28 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=8192'
+        loader: 'url-loader?limit=8192&name=[name].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=8192&minetype=application/font-woff"
+        loader: "url-loader?limit=8192&minetype=application/font-woff&name=[name].[ext]"
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
-      },
-      {
-        test: /jquery\.js$/,
-        loader: 'expose?jQuery'
+        loader: "file-loader?name=[name].[ext]"
       }
     ]
   },
-  plugins: [commonsPlugin]
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new bowerWebpackPlugin({
+      modulesDirectories: ['app/libraries'],
+      excludes: /.*\.less/
+    }),
+    new webpack.ProvidePlugin({
+      "$": "jquery",
+      "jQuery": "jquery",
+      "windows.jQuery": "jquery"
+    })
+  ]
 };

@@ -1,6 +1,6 @@
 {
   "name": "generator-react-flux",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",

@@ -2,6 +2,7 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
+var logoImg = require('../assets/images/logo.svg');
 
 var Header = React.createClass({
   render: function () {
@@ -16,7 +17,9 @@ var Header = React.createClass({
                 <span className={"icon-bar"}></span>
                 <span className={"icon-bar"}></span>
               </button>
-              <Link className={"navbar-brand"} to="app">Brand</Link>
+              <Link className={"navbar-brand"} to="app">
+                <img width="20" src={logoImg}></img>
+              </Link>
             </div>
             <div className={"collapse navbar-collapse"} id="navigation">
               <ul className={"nav navbar-nav"}>
