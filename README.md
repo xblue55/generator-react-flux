@@ -1,4 +1,4 @@
-# generator-react-flux [![Build Status](https://secure.travis-ci.org/vn38minhtran/generator-react-flux.png?branch=master)](https://travis-ci.org/vn38minhtran/generator-react-flux)
+# generator-react-flux
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -32,15 +32,10 @@ npm install -g generator-react-flux
 Finally, initiate the generator:
 
 ```bash
+mkdir example
+cd example
 yo react-flux
 ```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
 
 ## License
 
