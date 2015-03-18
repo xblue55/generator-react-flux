@@ -19,16 +19,25 @@ var Todo = React.createClass({
   },
   componentWillMount: function () {
     var self = this;
-    TodoStore.on(TodoConstant.ITEM_ADDED, function () {
+    TodoStore.on(TodoConstant.ITEM_ADDED, function (item) {
       self.setState({newItem: '', hasChange: false, isValid: false});
-      toastr.success('New todo item had been add.');
+      toastr.success(item + ' had been add.');
     });
     TodoStore.on(TodoConstant.TODO_CHANGE, function () {
-      self.setState({items: TodoStore.getAll()});
+      self.setState({items: TodoStore.getItems()});
+      self.forceUpdate();
     });
+    TodoStore.on(TodoConstant.ITEM_REMOVED,function(item){
+      toastr.success(item + ' had been remove');
+    })
   },
   componentDidMount: function () {
-    this.setState({items: TodoStore.getAll()});
+    TodoActionCreators.fetchData();
+  },
+  componentWillUnmount: function() {
+    TodoStore.removeAllListeners(TodoConstant.ITEM_ADDED);
+    TodoStore.removeAllListeners(TodoConstant.TODO_CHANGE);
+    TodoStore.removeAllListeners(TodoConstant.ITEM_REMOVED);
   },
   handleInputChange: function (event) {
     var value = event.target.value;
