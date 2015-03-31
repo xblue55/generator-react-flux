@@ -12,6 +12,7 @@ var imagemin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
 var modRewrite = require('connect-modrewrite');
 var runSequence = require('run-sequence');
+var karma = require('gulp-karma');
 
 gulp.task('clean', function () {
   del.sync(['.tmp', 'dist']);
@@ -80,6 +81,14 @@ gulp.task('serve', ['preServe'], function () {
   });
 
   gulp.watch(['app/**/*', '!app/**/*.html'], ['webpack']);
+});
+
+gulp.task('test', function () {
+  return gulp.src('test/spec/**/*.js')
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'run'
+    }));
 });
 
 gulp.task('build', function (callback) {

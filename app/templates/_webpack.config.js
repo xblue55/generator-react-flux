@@ -1,20 +1,20 @@
-var path = require("path");
-var webpack = require("webpack");
-var bowerWebpackPlugin = require("bower-webpack-plugin");
+var path = require('path');
+var webpack = require('webpack');
+var bowerWebpackPlugin = require('bower-webpack-plugin');
 
 module.exports = {
   resolve: {
-    extensions: ["", ".jsx", ".js"]
+    extensions: ['', '.jsx', '.js']
   },
   output: {
-    chunkFilename: "[name].chunk.js",
+    chunkFilename: '[name].chunk.js',
     publicPath: '/'
   },
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loader: "jsx-loader"
+        loader: 'jsx-loader?harmony'
       },
       {
         test: /\.css$/,
@@ -22,19 +22,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: "style!css!sass?outputStyle=expanded&" +
-        "includePaths[]=" +
-        (path.resolve(__dirname, "./app/libraries")) + "&" +
-        "includePaths[]=" +
-        (path.resolve(__dirname, "./node_modules"))
+        loader: 'style!css!sass?outputStyle=expanded&' +
+        'includePaths[]=' +
+        (path.resolve(__dirname, './app/libraries')) + '&' +
+        'includePaths[]=' +
+        (path.resolve(__dirname, './node_modules'))
       },
       {
         test: /\.sass$/,
-        loader: "style!css!sass?indentedSyntax=sass"
+        loader: 'style!css!sass?indentedSyntax=sass'
       },
       {
         test: /\.less$/,
-        loader: "style!css!less"
+        loader: 'style!css!less'
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -42,11 +42,11 @@ module.exports = {
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=8192&minetype=application/font-woff&name=[name].[ext]"
+        loader: 'url-loader?limit=8192&minetype=application/font-woff&name=[name].[ext]'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader?name=[name].[ext]"
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },
@@ -57,9 +57,9 @@ module.exports = {
       excludes: /.*\.less/
     }),
     new webpack.ProvidePlugin({
-      "$": "jquery",
-      "jQuery": "jquery",
-      "windows.jQuery": "jquery"
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'windows.jQuery': 'jquery'
     })
   ]
 };

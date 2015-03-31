@@ -58,6 +58,14 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('webpack.config.js')
       );
       this.fs.copy(
+        this.templatePath('_karma.conf.js'),
+        this.destinationPath('karma.conf.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack-test.config.js'),
+        this.destinationPath('webpack-test.config.js')
+      );
+      this.fs.copy(
         this.templatePath('bowerrc'),
         this.destinationPath('.bowerrc')
       );
@@ -66,6 +74,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.gitignore')
       );
       this.directory('app','app');
+      this.directory('test','test');
       this.mkdir('app/assets/fonts');
     },
 

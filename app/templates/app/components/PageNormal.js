@@ -1,14 +1,14 @@
 var React = require('react');
-var DocumentTitle = require('react-document-title');
+var Document = require('./Document');
 
 var PageNormal = React.createClass({
   render: function () {
     return (
-      <DocumentTitle title="Page Normal | React-Flux">
-        <div className="page-1">
+      <Document title="Page Normal | React-Flux" bodyClass="page-normal">
+        <div>
           <h1>Page Normal</h1>
         </div>
-      </DocumentTitle>
+      </Document>
     );
   }
 });

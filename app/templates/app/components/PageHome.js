@@ -1,20 +1,20 @@
 var React = require('react');
 var Todo = require('./Todo');
-var DocumentTitle = require('react-document-title');
+var Document = require('./Document');
 
 var PageHome = React.createClass({
   render: function () {
     return (
-      <DocumentTitle title="Home|React-Flux">
-        <div className="page-home">
+      <Document title="Home|React-Flux" bodyClass="page-home">
+        <div>
           <section className="page-header">
             <h1>Todo</h1>
           </section>
           <section className="main-content">
-            <Todo/>
+            <Todo />
           </section>
         </div>
-      </DocumentTitle>
+      </Document>
     );
   }
 });

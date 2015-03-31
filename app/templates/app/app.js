@@ -38,8 +38,6 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler, state) {
-  var bodyClass = classNames('page' + state.path.replace('/','-'));
-  document.body.classList.add(bodyClass);
+Router.run(routes, Router.HistoryLocation, function (Handler) {
   React.render(<Handler/>, document.getElementById('app'));
 });

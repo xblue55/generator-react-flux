@@ -1,14 +1,12 @@
 var React = require('react');
-var DocumentTitle = require('react-document-title');
+var Document = require('./Document');
 
 var SubPage = React.createClass({
   render: function () {
     return (
-      <DocumentTitle title="Subpage | PageNested | React-Flux">
-        <div>
-          <h1>Subpage</h1>
-        </div>
-      </DocumentTitle>
+      <Document title="Subpage | PageNested | React-Flux" bodyClass="page-nested-sub-page">
+        <h1>Subpage</h1>
+      </Document>
     );
   }
 });

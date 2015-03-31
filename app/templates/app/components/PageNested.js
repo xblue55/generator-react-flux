@@ -1,13 +1,13 @@
 var React = require('react');
-var DocumentTitle = require('react-document-title');
+var Document = require('./Document');
 var RouteHandler = require('react-router').RouteHandler;
 var Link = require('react-router').Link;
 
 var PageNested = React.createClass({
   render: function () {
     return (
-      <DocumentTitle title="Page Nested | React-Flux">
-        <div className="page-2">
+      <Document title="Page Nested | React-Flux" bodyClass="page-nested">
+        <div>
           <div className="row">
           	<div className="col-sm-9">
           		<RouteHandler/>
@@ -24,7 +24,7 @@ var PageNested = React.createClass({
           	</aside>
           </div>
         </div>
-      </DocumentTitle>
+      </Document>
     );
   }
 });

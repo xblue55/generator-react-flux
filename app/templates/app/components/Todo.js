@@ -52,9 +52,9 @@ var Todo = React.createClass({
     TodoActionCreators.addNewItem(this.state.newItem);
   },
   renderItems: function () {
-    return _.map(this.state.items, function (item) {
+    return _.map(this.state.items, function (item, index) {
       return (
-        <TodoItem item={item}/>
+        <TodoItem key={index} item={item}/>
       )
     });
   },
