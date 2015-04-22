@@ -22,7 +22,7 @@ module.exports = yeoman.generators.Base.extend({
         name: 'appName',
         message: 'What is your app\'s name ?',
         default: path.basename(this.destinationRoot())
-      },
+      }
     ];
 
     this.prompt(prompts, function (props) {

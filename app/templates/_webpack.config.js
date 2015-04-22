@@ -3,12 +3,17 @@ var webpack = require('webpack');
 var bowerWebpackPlugin = require('bower-webpack-plugin');
 
 module.exports = {
-  resolve: {
-    extensions: ['', '.jsx', '.js']
+  entry: {
+    app: path.resolve(__dirname, './app/app.js'),
+    commons: ['jquery', 'underscore', 'bootstrap']
   },
   output: {
+    filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     publicPath: '/'
+  },
+  resolve: {
+    extensions: ['', '.jsx', '.js']
   },
   module: {
     loaders: [
@@ -51,7 +56,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.optimize.CommonsChunkPlugin('commons', 'common.js'),
     new bowerWebpackPlugin({
       modulesDirectories: ['app/libraries'],
       excludes: /.*\.less/

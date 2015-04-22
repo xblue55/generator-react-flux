@@ -1,3 +1,7 @@
+### 0.1.2
+- Use Webpack watch instead of Gulp watch.
+- Update 'CommonsChunkPlugin' config.
+
 ### 0.1.1
 - Fix typos.
 - Remove bower components.

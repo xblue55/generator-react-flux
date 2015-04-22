@@ -3,16 +3,17 @@ var webpack = require('webpack');
 var bowerWebpackPlugin = require('bower-webpack-plugin');
 
 module.exports = {
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    publicPath: '/'
+  },
   resolve: {
     extensions: ['', '.jsx', '.js'],
     alias: {
       app: path.resolve(__dirname, './app'),
       test: path.resolve(__dirname, './test')
     }
-  },
-  output: {
-    chunkFilename: '[name].chunk.js',
-    publicPath: '/'
   },
   module: {
     loaders: [
