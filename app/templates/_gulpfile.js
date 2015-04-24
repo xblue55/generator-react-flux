@@ -47,7 +47,7 @@ gulp.task('webpack:watch', function () {
           chunks: false,
           chunkModules: false,
           modules: false,
-          children: true,
+          children: false,
           version: true,
           cached: false,
           cachedAssets: false,

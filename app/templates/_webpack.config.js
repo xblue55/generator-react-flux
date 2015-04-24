@@ -1,11 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var bowerWebpackPlugin = require('bower-webpack-plugin');
+var extractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, './app/app.js'),
-    commons: ['jquery', 'underscore', 'bootstrap']
+    vendor: ['jquery', 'bootstrap', 'lodash']
   },
   output: {
     filename: '[name].js',
@@ -13,7 +14,11 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['', '.jsx', '.js']
+    extensions: ['', '.jsx', '.js'],
+    alias: {
+      app: path.resolve(__dirname, './app'),
+      test: path.resolve(__dirname, './test')
+    }
   },
   module: {
     loaders: [
@@ -22,44 +27,46 @@ module.exports = {
         loader: 'jsx-loader?harmony'
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: extractTextPlugin.extract("style-loader", "css-loader")
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass?outputStyle=expanded&' +
-        'includePaths[]=' +
-        (path.resolve(__dirname, './app/libraries')) + '&' +
-        'includePaths[]=' +
-        (path.resolve(__dirname, './node_modules'))
+        loader: extractTextPlugin.extract('style-loader', 'css-loader!sass-loader?outputStyle=expanded&' +
+          'includePaths[]=' +
+          (path.resolve(__dirname, './app/bower_components')) + '&' +
+          'includePaths[]=' +
+          (path.resolve(__dirname, './node_modules')))
       },
       {
         test: /\.sass$/,
-        loader: 'style!css!sass?indentedSyntax=sass'
+        loader: extractTextPlugin.extract('style-loader', 'css-loader!sass-loader?indentedSyntax=sass')
       },
       {
         test: /\.less$/,
-        loader: 'style!css!less'
+        loader: extractTextPlugin.extract('style-loader', 'css-loader!less-loader')
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=8192&name=[name].[ext]'
+        loader: 'file-loader?name=[name].[ext]'
       },
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=8192&minetype=application/font-woff&name=[name].[ext]'
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('commons', 'common.js'),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+    new extractTextPlugin('[name].css'),
     new bowerWebpackPlugin({
-      modulesDirectories: ['app/libraries'],
-      excludes: /.*\.less/
+      modulesDirectories: [path.resolve(__dirname, './app/bower_components')],
+      excludes: /.*\.less/,
+      searchResolveModulesDirectories: false
     }),
     new webpack.ProvidePlugin({
       '$': 'jquery',

@@ -1,3 +1,11 @@
+### 0.1.3
+- Rename 'libraries' to 'bower_components' (standard name).
+- Split app and vendor code.
+- Separate css bundle.
+- Use 'Lodash' instead of 'underscore'.
+- Add 'Notify' component.
+- Add ['Revalidator'](https://github.com/flatiron/revalidator) mixin to validate form.
+
 ### 0.1.2
 - Use Webpack watch instead of Gulp watch.
 - Update 'CommonsChunkPlugin' config.
