@@ -42,43 +42,72 @@ yo react-flux
 .
 ├── app
 │   ├── actions
+│   │   ├── NotifyActionCreator.js
 │   │   └── TodoActionCreators.js
 │   ├── app.js
 │   ├── assets
 │   │   ├── fonts
 │   │   ├── images
+│   │   │   ├── ajax-loader.gif
+│   │   │   ├── ajax-loader-squares.gif
+│   │   │   └── logo.svg
 │   │   └── styles
-│   │       └── app.scss
+│   │       ├── app.scss
+│   │       └── spinner.scss
+│   ├── bower_components
 │   ├── components
+│   │   ├── Document.js
 │   │   ├── Header.js
+│   │   ├── Notify.js
 │   │   ├── PageHome.js
 │   │   ├── PageNested.js
 │   │   ├── PageNormal.js
 │   │   ├── PageNotFound.js
+│   │   ├── Spinner.js
 │   │   ├── SubPageDefault.js
 │   │   ├── SubPage.js
 │   │   ├── TodoItem.js
 │   │   └── Todo.js
 │   ├── constants
+│   │   ├── NotifyConstant.js
 │   │   └── TodoConstant.js
 │   ├── dispatcher
-│   │   └── TodoDispatcher.js
+│   │   └── AppDispatcher.js
 │   ├── index.html
-│   ├── libraries
-│   └── stores
-│       └── TodoStore.js
+│   ├── services
+│   │   └── TodoService.js
+│   ├── stores
+│   │   ├── NotifyStore.js
+│   │   └── TodoStore.js
+│   └── utils
+│       └── RevalidatorMixin.js
 ├── bower.json
 ├── gulpfile.js
+├── karma.conf.js
 ├── node_modules
 ├── package.json
 ├── README.md
-└── webpack.config.js
+├── test
+│   ├── helper
+│   │   ├── stubRouterContext.js
+│   │   └── TestContext.js
+│   └── spec
+│       └── components
+│           └── Document.js
+├── webpack.config.js
+└── webpack-test.config.js
+
 ```
 
 ### Gulp tasks
-Watch & rebuild(dev):
+Watch(dev):
 ```bash
 gulp serve
+```
+
+Test:
+```
+gulp test
 ```
 
 Build:

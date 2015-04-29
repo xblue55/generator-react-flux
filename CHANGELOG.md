@@ -1,3 +1,7 @@
+### 0.1.4
+- Update sample app.
+- Update README.
+
 ### 0.1.3
 - Rename 'libraries' to 'bower_components' (standard name).
 - Split app and vendor code.
