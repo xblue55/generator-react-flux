@@ -43,8 +43,7 @@ yo react-flux
 ├── app
 │   ├── actions
 │   │   ├── NotifyActionCreator.js
-│   │   └── TodoActionCreators.js
-│   ├── app.js
+│   │   └── TodoActionCreator.js
 │   ├── assets
 │   │   ├── fonts
 │   │   ├── images
@@ -73,20 +72,15 @@ yo react-flux
 │   │   └── TodoConstant.js
 │   ├── dispatcher
 │   │   └── AppDispatcher.js
-│   ├── index.html
 │   ├── services
 │   │   └── TodoService.js
 │   ├── stores
 │   │   ├── NotifyStore.js
 │   │   └── TodoStore.js
-│   └── utils
-│       └── RevalidatorMixin.js
-├── bower.json
-├── gulpfile.js
-├── karma.conf.js
-├── node_modules
-├── package.json
-├── README.md
+│   ├── utils
+│   │   └── RevalidatorMixin.js
+│   ├── app.js
+│   └── index.html
 ├── test
 │   ├── helper
 │   │   ├── stubRouterContext.js
@@ -94,6 +88,16 @@ yo react-flux
 │   └── spec
 │       └── components
 │           └── Document.js
+├── bower.json
+├── .bowerrc
+├── .editorconfig
+├── .eslintrc
+├── .gitignore
+├── gulpfile.js
+├── .jshintrc
+├── karma.conf.js
+├── package.json
+├── README.md
 ├── webpack.config.js
 └── webpack-test.config.js
 
