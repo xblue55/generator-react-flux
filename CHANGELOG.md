@@ -1,3 +1,6 @@
+### 0.2.0
+- Refactor sample app.
+
 ### 0.1.5
 - ESLint
 

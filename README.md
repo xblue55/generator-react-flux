@@ -42,49 +42,43 @@ yo react-flux
 .
 ├── app
 │   ├── actions
-│   │   ├── NotifyActionCreator.js
-│   │   └── TodoActionCreator.js
+│   │   └── .gitkeep
 │   ├── assets
 │   │   ├── fonts
+│   │   │   └── .gitkeep
 │   │   ├── images
-│   │   │   ├── ajax-loader.gif
-│   │   │   ├── ajax-loader-squares.gif
 │   │   │   └── logo.svg
 │   │   └── styles
 │   │       ├── app.scss
-│   │       └── spinner.scss
+│   │       ├── footer.scss
+│   │       └── header.scss
 │   ├── bower_components
 │   ├── components
 │   │   ├── Document.js
+│   │   ├── Footer.js
 │   │   ├── Header.js
-│   │   ├── Notify.js
 │   │   ├── PageHome.js
+│   │   ├── PageNestedDefault.js
 │   │   ├── PageNested.js
+│   │   ├── PageNestedSub.js
 │   │   ├── PageNormal.js
-│   │   ├── PageNotFound.js
-│   │   ├── Spinner.js
-│   │   ├── SubPageDefault.js
-│   │   ├── SubPage.js
-│   │   ├── TodoItem.js
-│   │   └── Todo.js
+│   │   └── PageNotFound.js
 │   ├── constants
-│   │   ├── NotifyConstant.js
-│   │   └── TodoConstant.js
+│   │   └── .gitkeep
 │   ├── dispatcher
 │   │   └── AppDispatcher.js
 │   ├── services
-│   │   └── TodoService.js
+│   │   └── .gitkeep
 │   ├── stores
-│   │   ├── NotifyStore.js
-│   │   └── TodoStore.js
+│   │   └── .gitkeep
 │   ├── utils
-│   │   └── RevalidatorMixin.js
+│   │   └── .gitkeep
 │   ├── app.js
 │   └── index.html
+├── node_modules
 ├── test
 │   ├── helper
-│   │   ├── stubRouterContext.js
-│   │   └── TestContext.js
+│   │   └── phantomjs-shims.js
 │   └── spec
 │       └── components
 │           └── Document.js
@@ -94,12 +88,11 @@ yo react-flux
 ├── .eslintrc
 ├── .gitignore
 ├── gulpfile.js
-├── .jshintrc
 ├── karma.conf.js
 ├── package.json
 ├── README.md
 ├── webpack.config.js
-└── webpack-test.config.js
+└── webpack.test.config.js
 
 ```
 
