@@ -1,6 +1,6 @@
 var path = require('path');
 var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-var webpackStatsHelper = require('./_webpack.stats.helper.js');
+var webpackStatsHelper = require('./webpack.stats.helper.js');
 
 var scssIncludePaths = [
   path.resolve(__dirname, './app/bower_components'),

@@ -15,7 +15,7 @@ var modRewrite = require('connect-modrewrite');
 var runSequence = require('run-sequence');
 var karma = require('gulp-karma');
 var opn = require('opn');
-var webpackStatsHelper = require('./_webpack.stats.helper.js');
+var webpackStatsHelper = require('./webpack.stats.helper.js');
 var replace = require('gulp-replace-task');
 
 var isOpen = false;
@@ -68,7 +68,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('webpack:dev', function () {
-  var webpackConfigs = require('./_webpack.dev.config.js');
+  var webpackConfigs = require('./webpack.dev.config.js');
   webpackConfigs.quiet = true;
   return gulp.src(['app/*.{js,jsx}'])
     .pipe(named())
@@ -77,7 +77,7 @@ gulp.task('webpack:dev', function () {
 });
 
 gulp.task('webpack:watch', function () {
-  var webpackConfigs = require('./_webpack.dev.config.js');
+  var webpackConfigs = require('./webpack.dev.config.js');
   webpackConfigs.watch = true;
   return gulp.src('app/*.{js,jsx}')
     .pipe(named())
@@ -86,7 +86,7 @@ gulp.task('webpack:watch', function () {
 });
 
 gulp.task('webpack:build', function () {
-  var webpackConfigs = require('./_webpack.build.config.js');
+  var webpackConfigs = require('./webpack.build.config.js');
   return gulp.src(['app/*.{js,jsx}'])
     .pipe(named())
     .pipe(webpack(webpackConfigs))
