@@ -1,4 +1,6 @@
 var path = require('path');
+var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+var webpackStatsHelper = require('./_webpack.stats.helper.js');
 
 var scssIncludePaths = [
   path.resolve(__dirname, './app/bower_components'),
@@ -6,9 +8,12 @@ var scssIncludePaths = [
 ];
 
 module.exports = {
+  entry: {
+    app: path.resolve(__dirname, './app/app.js')
+  },
   output: {
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].chunk.[chunkhash].js',
     publicPath: '/'
   },
   resolve: {
@@ -38,27 +43,27 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: extractTextWebpackPlugin.extract('style-loader', 'css-loader')
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&' + scssIncludePaths.join('&includePaths[]=')
+        loader: extractTextWebpackPlugin.extract('style-loader', 'css-loader!sass-loader?outputStyle=expanded&' + scssIncludePaths.join('&includePaths[]='))
       },
       {
         test: /\.sass$/,
-        loader: 'style-loader!css-loader!sass-loader?indentedSyntax=sass'
+        loader: extractTextWebpackPlugin.extract('style-loader', 'css-loader!sass-loader?indentedSyntax=sass')
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
+        loader: extractTextWebpackPlugin.extract('style-loader', 'css-loader!less-loader')
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[hash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\S+)?$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[hash].[ext]'
       }
     ]
   },
@@ -68,5 +73,8 @@ module.exports = {
   eslint: {
     configFile: path.resolve(__dirname, './.eslintrc')
   },
-  plugins: []
+  plugins: [
+    new extractTextWebpackPlugin('[name].[contenthash].css'),
+    new webpackStatsHelper.saveToFile()
+  ]
 };

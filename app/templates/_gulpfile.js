@@ -15,8 +15,9 @@ var modRewrite = require('connect-modrewrite');
 var runSequence = require('run-sequence');
 var karma = require('gulp-karma');
 var opn = require('opn');
+var webpackStatsHelper = require('./_webpack.stats.helper.js');
+var replace = require('gulp-replace-task');
 
-var isBuild = false;
 var isOpen = false;
 var autoprefixerBrowsers = [
   'ie >= 10',
@@ -29,56 +30,76 @@ var autoprefixerBrowsers = [
   'android >= 4.4',
   'bb >= 10'
 ];
+var webpackStatsOptions = {
+  colors: gulpUtil.colors.supportsColor,
+  hash: false,
+  timings: false,
+  chunks: false,
+  chunkModules: false,
+  modules: false,
+  children: false,
+  version: true,
+  cached: false,
+  cachedAssets: false,
+  reasons: false,
+  source: false,
+  errorDetails: false
+};
+
+function openApp() {
+  if (!isOpen) {
+    opn('http://localhost:3000', null, function () {
+      isOpen = true;
+    });
+  }
+}
+
+function handleWebpack(error, stats) {
+  if (error) {
+    gulpUtil.log(error.toString());
+  } else {
+    gulpUtil.log(stats.toString(webpackStatsOptions));
+    openApp();
+  }
+}
 
 gulp.task('clean', function () {
   del.sync(['.tmp', 'dist']);
 });
 
-gulp.task('webpack', function () {
-  var webpackConfigs = require('./webpack.config.js');
-  webpackConfigs.quiet = !isBuild;
-  return gulp.src('app/*.{js,jsx}')
+gulp.task('webpack:dev', function () {
+  var webpackConfigs = require('./_webpack.dev.config.js');
+  webpackConfigs.quiet = true;
+  return gulp.src(['app/*.{js,jsx}'])
     .pipe(named())
     .pipe(webpack(webpackConfigs))
     .pipe(gulp.dest('.tmp'));
 });
 
 gulp.task('webpack:watch', function () {
-  var webpackConfigs = require('./webpack.config.js');
+  var webpackConfigs = require('./_webpack.dev.config.js');
   webpackConfigs.watch = true;
   return gulp.src('app/*.{js,jsx}')
     .pipe(named())
-    .pipe(webpack(webpackConfigs, null, function (error, stats) {
-      if (error) {
-        gulpUtil.log(error.toString());
-      } else {
-        gulpUtil.log(stats.toString({
-          colors: gulpUtil.colors.supportsColor,
-          hash: false,
-          timings: false,
-          chunks: false,
-          chunkModules: false,
-          modules: false,
-          children: false,
-          version: true,
-          cached: false,
-          cachedAssets: false,
-          reasons: false,
-          source: false,
-          errorDetails: false
-        }));
-        if (!isOpen) {
-          opn('http://localhost:3000', null, function () {
-            isOpen = true;
-          });
-        }
-      }
-    }))
+    .pipe(webpack(webpackConfigs, null, handleWebpack))
     .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('html', ['webpack'], function () {
+gulp.task('webpack:build', function () {
+  var webpackConfigs = require('./_webpack.build.config.js');
+  return gulp.src(['app/*.{js,jsx}'])
+    .pipe(named())
+    .pipe(webpack(webpackConfigs))
+    .pipe(gulp.dest('.tmp'));
+});
+
+gulp.task('html', ['webpack:build'], function () {
+  var patterns = webpackStatsHelper.getReplacePatterns();
   return gulp.src('app/*.html')
+    .pipe(replace({
+      patterns: patterns,
+      usePrefix: false
+    }))
     .pipe(minifyHtml({empty: true, cdata: true, conditionals: true}))
     .pipe(gulp.dest('dist'));
 });
@@ -134,7 +155,7 @@ gulp.task('browserSync', function (callback) {
 });
 
 gulp.task('serve', function (callback) {
-  runSequence('clean', 'webpack', 'browserSync', 'webpack:watch', callback);
+  runSequence('clean', 'webpack:dev', 'browserSync', 'webpack:watch', callback);
 });
 
 gulp.task('test', function () {
@@ -146,7 +167,6 @@ gulp.task('test', function () {
 });
 
 gulp.task('build', function (callback) {
-  isBuild = true;
   runSequence('clean', 'html', 'scripts', 'styles', 'images', 'fonts', 'copy', callback);
 });
 

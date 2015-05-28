@@ -35,11 +35,6 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.fs.copyTpl(
-        this.templatePath('_README.md'),
-        this.destinationPath('README.md'),
-        {appName: this.appName}
-      );
-      this.fs.copyTpl(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json'),
         {appName: this.appName}
@@ -48,18 +43,31 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_gulpfile.js'),
         this.destinationPath('gulpfile.js')
       );
+      this.fs.copy(
+        this.templatePath('_karma.conf.js'),
+        this.destinationPath('karma.conf.js')
+      );
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         {appName: this.appName}
       );
-      this.fs.copy(
-        this.templatePath('_webpack.config.js'),
-        this.destinationPath('webpack.config.js')
+      this.fs.copyTpl(
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md'),
+        {appName: this.appName}
       );
       this.fs.copy(
-        this.templatePath('_karma.conf.js'),
-        this.destinationPath('karma.conf.js')
+        this.templatePath('_webpack.build.config.js'),
+        this.destinationPath('webpack.build.config.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.dev.config.js'),
+        this.destinationPath('webpack.dev.config.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.stats.helper.js'),
+        this.destinationPath('webpack.stats.helper.js')
       );
       this.fs.copy(
         this.templatePath('_webpack.test.config.js'),

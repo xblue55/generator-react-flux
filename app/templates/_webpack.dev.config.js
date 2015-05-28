@@ -66,13 +66,13 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new extractTextWebpackPlugin('[name].css')
-  ],
   stats: {
     children: false
   },
   eslint: {
     configFile: path.resolve(__dirname, './.eslintrc')
-  }
+  },
+  plugins: [
+    new extractTextWebpackPlugin('[name].css')
+  ]
 };

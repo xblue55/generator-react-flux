@@ -1,3 +1,6 @@
+### 0.2.1
+- Long term caching
+
 ### 0.2.0
 - Refactor sample app.
 
