@@ -1,3 +1,6 @@
+### 0.3.1
+- Update readme.
+
 ### 0.3.0
 - Webpack stream.
 - Proxy middleware.

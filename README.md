@@ -49,9 +49,10 @@ yo react-flux
 │   │   ├── images
 │   │   │   └── logo.svg
 │   │   └── styles
-│   │       ├── app.scss
-│   │       ├── footer.scss
-│   │       └── header.scss
+│   │       ├── _animations.scss
+│   │       ├── _mixins.scss
+│   │       ├── _variables.scss
+│   │       └── app.scss
 │   ├── bower_components
 │   ├── components
 │   │   ├── Document.js
@@ -91,7 +92,10 @@ yo react-flux
 ├── karma.conf.js
 ├── package.json
 ├── README.md
-├── webpack.config.js
+├── webpack.build.config.js
+├── webpack.dev.config.js
+├── webpack.stats.helper.js
+├── webpack.stats.json
 └── webpack.test.config.js
 
 ```
