@@ -1,3 +1,10 @@
+### 0.3.0
+- Webpack stream.
+- Proxy middleware.
+- Update webpack build config.
+- Fix browser sync watch.
+- Update sample app.
+
 ### 0.2.1
 - Long term caching
 

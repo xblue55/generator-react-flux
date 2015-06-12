@@ -1,6 +1,6 @@
 var path = require('path');
 var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-var webpackStatsHelper = require('./webpack.stats.helper.js');
+var webpackStatsHelper = require('./webpack.stats.helper');
 
 var scssIncludePaths = [
   path.resolve(__dirname, './app/bower_components'),
@@ -12,8 +12,8 @@ module.exports = {
     app: path.resolve(__dirname, './app/app.js')
   },
   output: {
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].chunk.[chunkhash].js',
+    filename: '[hash].js',
+    chunkFilename: '[chunkhash].js',
     publicPath: '/'
   },
   resolve: {
@@ -59,11 +59,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        loader: 'file-loader?name=[name].[hash].[ext]'
+        loader: 'file-loader?name=[hash].[ext]'
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\S+)?$/,
-        loader: 'file-loader?name=[name].[hash].[ext]'
+        loader: 'file-loader?name=[hash].[ext]'
       }
     ]
   },
@@ -74,7 +74,7 @@ module.exports = {
     configFile: path.resolve(__dirname, './.eslintrc')
   },
   plugins: [
-    new extractTextWebpackPlugin('[name].[contenthash].css'),
+    new extractTextWebpackPlugin('[contenthash].css'),
     new webpackStatsHelper.saveToFile()
   ]
 };

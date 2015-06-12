@@ -11,10 +11,10 @@ require('./assets/styles/app.scss');
 var App = React.createClass({
   render: function () {
     return (
-      <div className={"layout-page"}>
+      <div className='layout-page'>
         <Header/>
-        <main className={"layout-main"}>
-          <div className={"container"}>
+        <main className='layout-main'>
+          <div className='container'>
             <RouteHandler/>
           </div>
         </main>
@@ -43,6 +43,17 @@ var routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.body);
-});
+function run() {
+  Router.run(routes, Router.HistoryLocation, function (Handler) {
+    if (document.body.className.indexOf('render') === -1) {
+      document.body.className += document.body.className.length ? ' render' : 'render';
+    }
+    React.render(<Handler/>, document.body);
+  });
+}
+
+if (window.addEventListener) {
+  window.addEventListener('DOMContentLoaded', run);
+} else {
+  window.attachEvent('onload', run);
+}
