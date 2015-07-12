@@ -1,3 +1,6 @@
+### 0.3.2
+- Update react-proxy-plus-loader to latest version.
+
 ### 0.3.1
 - Update readme.
 
