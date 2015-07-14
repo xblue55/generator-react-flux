@@ -1,3 +1,6 @@
+### 1.0.1
+- Port scanner support.
+
 ### 1.0.0
 - Use `webpack-hot-loader & webpack-dev-server` instead of `gulp & browsersync`.
 
