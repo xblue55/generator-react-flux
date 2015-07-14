@@ -1,3 +1,6 @@
+### 1.0.0
+- Use `webpack-hot-loader & webpack-dev-server` instead of `gulp & browsersync`.
+
 ### 0.3.2
 - Update react-proxy-plus-loader to latest version.
 

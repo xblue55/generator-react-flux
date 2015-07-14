@@ -34,14 +34,14 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
+      this.directory('app', 'app');
+      this.directory('lib', 'lib');
+      this.directory('scripts', 'scripts');
+      this.directory('test', 'test');
       this.fs.copyTpl(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json'),
         {appName: this.appName}
-      );
-      this.fs.copy(
-        this.templatePath('_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
       );
       this.fs.copy(
         this.templatePath('_karma.conf.js'),
@@ -62,16 +62,32 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('webpack.build.config.js')
       );
       this.fs.copy(
+        this.templatePath('_webpack.config.js'),
+        this.destinationPath('webpack.config.js')
+      );
+      this.fs.copy(
         this.templatePath('_webpack.dev.config.js'),
         this.destinationPath('webpack.dev.config.js')
       );
       this.fs.copy(
-        this.templatePath('_webpack.stats.helper.js'),
-        this.destinationPath('webpack.stats.helper.js')
+        this.templatePath('_webpack.dev.server.js'),
+        this.destinationPath('webpack.dev.server.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.prebuild.config.js'),
+        this.destinationPath('webpack.prebuild.config.js')
+      );
+      this.fs.copy(
+        this.templatePath('_webpack.prebuild.server.js'),
+        this.destinationPath('webpack.prebuild.server.js')
       );
       this.fs.copy(
         this.templatePath('_webpack.test.config.js'),
         this.destinationPath('webpack.test.config.js')
+      );
+      this.fs.copy(
+        this.templatePath('babelrc'),
+        this.destinationPath('.babelrc')
       );
       this.fs.copy(
         this.templatePath('bowerrc'),
@@ -81,8 +97,6 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
       );
-      this.directory('app','app');
-      this.directory('test','test');
     },
 
     projectfiles: function () {

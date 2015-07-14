@@ -1,6 +1,6 @@
 {
   "name": "generator-react-flux",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -26,7 +26,9 @@
     "flux",
     "react-flux",
     "webpack",
-    "rest API"
+    "rest API",
+    "react-hot-loader",
+    "webpack-dev-server"
   ],
   "dependencies": {
     "yeoman-generator": "^0.18.9",

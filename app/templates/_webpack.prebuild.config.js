@@ -2,8 +2,9 @@ var WebpackConfig = require('./lib/webpack-config');
 
 module.exports = WebpackConfig({
   hot: false,
-  hash: true,
+  hash: false,
   debug: false,
   optimize: true,
-  saveStats: true
+  saveStats: false
 });
+

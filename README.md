@@ -50,9 +50,9 @@ yo react-flux
 │   │   │   └── logo.svg
 │   │   └── styles
 │   │       ├── _animations.scss
+│   │       ├── app.scss
 │   │       ├── _mixins.scss
-│   │       ├── _variables.scss
-│   │       └── app.scss
+│   │       └── _variables.scss
 │   ├── bower_components
 │   ├── components
 │   │   ├── Document.js
@@ -76,45 +76,57 @@ yo react-flux
 │   │   └── .gitkeep
 │   ├── app.js
 │   └── index.html
+├── lib
+│   ├── server.js
+│   ├── webpack-config.js
+│   └── webpack-stats-helper.js
 ├── node_modules
+├── scripts
+│   ├── post-build.js
+│   └── pre-build.js
 ├── test
 │   ├── helper
 │   │   └── phantomjs-shims.js
 │   └── spec
 │       └── components
 │           └── Document.js
+├── .babelrc
 ├── bower.json
 ├── .bowerrc
 ├── .editorconfig
 ├── .eslintrc
 ├── .gitignore
-├── gulpfile.js
 ├── karma.conf.js
 ├── package.json
 ├── README.md
 ├── webpack.build.config.js
+├── webpack.config.js
 ├── webpack.dev.config.js
-├── webpack.stats.helper.js
-├── webpack.stats.json
+├── webpack.dev.server.js
+├── webpack.prebuild.config.js
+├── webpack.prebuild.server.js
 └── webpack.test.config.js
 
 ```
 
-### Gulp tasks
+### Tasks
 Watch(dev):
 ```bash
-gulp serve
+npm run start
 ```
 
 Test:
 ```
-gulp test
+npm run test
 ```
 
 Build:
 ```bash
-gulp build
+npm run build
 ```
+
+Other:
+See `package.json`
 
 ## License
 
