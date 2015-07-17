@@ -120,7 +120,7 @@ Test:
 npm run test
 ```
 
-Priview
+Preview
 ```
 npm run preview
 ```

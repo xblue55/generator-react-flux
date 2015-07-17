@@ -1,3 +1,7 @@
+### 1.0.3
+- Fix typo.
+- Set fail on error when build.
+
 ### 1.0.2
 - Rename task prebuild to preview.
 
