@@ -74,12 +74,12 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('webpack.dev.server.js')
       );
       this.fs.copy(
-        this.templatePath('_webpack.prebuild.config.js'),
-        this.destinationPath('webpack.prebuild.config.js')
+        this.templatePath('_webpack.preview.config.js'),
+        this.destinationPath('webpack.preview.config.js')
       );
       this.fs.copy(
-        this.templatePath('_webpack.prebuild.server.js'),
-        this.destinationPath('webpack.prebuild.server.js')
+        this.templatePath('_webpack.preview.server.js'),
+        this.destinationPath('webpack.preview.server.js')
       );
       this.fs.copy(
         this.templatePath('_webpack.test.config.js'),

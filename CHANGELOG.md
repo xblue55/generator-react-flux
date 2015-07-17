@@ -1,3 +1,6 @@
+### 1.0.2
+- Rename task prebuild to preview.
+
 ### 1.0.1
 - Port scanner support.
 

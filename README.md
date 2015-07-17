@@ -103,8 +103,8 @@ yo react-flux
 ├── webpack.config.js
 ├── webpack.dev.config.js
 ├── webpack.dev.server.js
-├── webpack.prebuild.config.js
-├── webpack.prebuild.server.js
+├── webpack.preview.config.js
+├── webpack.preview.server.js
 └── webpack.test.config.js
 
 ```
@@ -120,13 +120,15 @@ Test:
 npm run test
 ```
 
+Priview
+```
+npm run preview
+```
+
 Build:
 ```bash
 npm run build
 ```
-
-Other:
-See `package.json`
 
 ## License
 
