@@ -35,7 +35,7 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.directory('app', 'app');
-      this.directory('lib', 'lib');
+      this.directory('helper', 'helper');
       this.directory('scripts', 'scripts');
       this.directory('test', 'test');
       this.fs.copyTpl(

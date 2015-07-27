@@ -1,7 +1,8 @@
-var objectAssign = require('object-assign');
+var merge = require('lodash.merge');
 var webpack = require('webpack');
 var path = require('path');
-var webpackStatsHelper = require('../lib/webpack-stats-helper.js');
+var webpackStatsHelper = require('./webpack-stats-helper');
+var url = require('url');
 
 module.exports = function (options) {
   var defaultOptions = {
@@ -10,10 +11,13 @@ module.exports = function (options) {
     debug: false,
     optimize: false,
     saveStats: false,
-    failOnError: false
+    failOnError: false,
+    host: '0.0.0.0',
+    port: 3000,
+    https: false
   };
 
-  options = objectAssign(defaultOptions, options || {});
+  options = merge(defaultOptions, options || {});
 
   var entry = {
     app: path.join(__dirname, '../app/app.js')
@@ -120,7 +124,11 @@ module.exports = function (options) {
   var config = {
     entry: Object.keys(entry).reduce(function (result, key) {
       result[key] = options.hot ? [
-        'webpack-dev-server/client?http://localhost:3000',
+        'webpack-dev-server/client?' + url.format({
+          hostname: options.host,
+          port: options.port,
+          protocol: options.https ? 'https' : 'http'
+        }),
         'webpack/hot/dev-server',
         entry[key]
       ] : entry[key];
@@ -154,6 +162,10 @@ module.exports = function (options) {
       configFile: path.join(__dirname, '../.eslintrc'),
       failOnError: options.failOnError,
       emitError: options.failOnError
+    },
+    node: {
+      net: 'mock',
+      dns: 'mock'
     },
     debug: options.debug
   };
