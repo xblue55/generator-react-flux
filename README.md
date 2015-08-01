@@ -136,6 +136,12 @@ MIT
 
 ## Change log
 
+### 1.0.5
+- Add Babel runtime, polyfill.
+- Remove comments when optimize.
+- Support banner.
+- Use `react-proxy-loader`.
+
 ### 1.0.4
 - Fix proxy, sever config.
 - Rename `lib` to `helper`.
