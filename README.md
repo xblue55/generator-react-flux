@@ -136,6 +136,9 @@ MIT
 
 ## Change log
 
+### 1.0.6
+- Fix `UglifyJsPlugin` config.
+
 ### 1.0.5
 - Add Babel runtime, polyfill.
 - Remove comments when optimize.
