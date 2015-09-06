@@ -137,7 +137,7 @@ MIT
 
 ## Change log
 
-### 1.0.8
+### 1.1.0
 - Update `css-loader`.
 - Use `postcss-loader` instead of `autoprefixer-loader`.
 - Update npm scripts.
