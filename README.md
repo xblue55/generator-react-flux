@@ -76,14 +76,15 @@ yo react-flux
 │   │   └── .gitkeep
 │   ├── app.js
 │   └── index.html
-├── lib
+├── helper
+│   ├── bundle.js
 │   ├── server.js
 │   ├── webpack-config.js
 │   └── webpack-stats-helper.js
 ├── node_modules
 ├── scripts
-│   ├── post-build.js
-│   └── pre-build.js
+│   ├── build-copy.js
+│   └── build-html.js
 ├── test
 │   ├── helper
 │   │   └── phantomjs-shims.js
@@ -135,6 +136,11 @@ npm run build
 MIT
 
 ## Change log
+
+### 1.0.8
+- Update `css-loader`.
+- Use `postcss-loader` instead of `autoprefixer-loader`.
+- Update npm scripts.
 
 ### 1.0.6
 - Fix `UglifyJsPlugin` config.
