@@ -137,6 +137,10 @@ MIT
 
 ## Change log
 
+### 1.1.1
+- Update npm packages.
+- Fix eslint.
+
 ### 1.1.0
 - Update `css-loader`.
 - Use `postcss-loader` instead of `autoprefixer-loader`.
